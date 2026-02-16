@@ -1,151 +1,140 @@
-# study_of_models_on_chestXray
-Project Overview
+# 📊 Study of Models on Chest X-ray
+## CNNs vs Vision Transformers for Medical Image Classification
 
-This project focuses on medical image classification using deep learning–based feature extraction and classification.
-Both Convolutional Neural Networks (CNNs) and Vision Transformers (ViT) are explored to analyze their effectiveness on medical images.
+---
 
-The experiments are conducted using Google Colab, with implementations in TensorFlow and PyTorch.
+## 🧩 Project Overview
 
-🎯 Objectives
+This project focuses on medical image classification using deep learning–based feature extraction and classification. Both Convolutional Neural Networks (CNNs) and Vision Transformers (ViT) are explored to analyze their effectiveness on chest X-ray images.
 
-Perform medical image classification using deep learning models
+The experiments are conducted using **Google Colab**, with implementations in **TensorFlow** and **PyTorch**.
 
-Compare CNN-based architectures with Vision Transformers
+---
 
-Analyze performance, execution time, and model complexity
+## 🎯 Objectives
 
-Build a reproducible and research-oriented pipeline
+- Perform medical image classification using deep learning models
+- Compare CNN-based architectures with Vision Transformers (ViT)
+- Analyze performance, execution time, and model complexity
+- Build a reproducible and research-oriented pipeline
 
-🧠 Models Used
-🔹 CNN Architectures
+---
+
+## 🧠 Models Used
+
+### 🔹 CNN Architectures
 
 The following pretrained CNN models (ImageNet weights) are used:
 
-EfficientNet
-
-ResNet50
-
-ResNet101
-
-DenseNet121
-
-VGG19
-
-MobileNet
+- **EfficientNet**
+- **ResNet50**
+- **ResNet101**
+- **DenseNet121**
+- **VGG19**
+- **MobileNet**
 
 These models are used for:
+- Feature extraction
+- Fine-tuning (where applicable)
 
-Feature extraction
+### 🔹 Vision Transformer (ViT)
 
-Fine-tuning (where applicable)
+- **ViT (Vision Transformer)** implemented using PyTorch
+- Captures global image dependencies, unlike CNNs which focus on local spatial features
 
-🔹 Vision Transformer
+---
 
-ViT (Vision Transformer) implemented using PyTorch
-
-Used to capture global image dependencies unlike CNNs which focus on local patterns
-
-🗂 Correct Dataset Structure
+## 🗂 Dataset Structure
 
 The dataset follows a train–test split with class-wise folders:
 
+```
 dataset_root/
 │
-├── train/
-│   ├── normal/
+├── normal/
+│   ├── train/
 │   │   ├── img1.jpg
 │   │   ├── img2.jpg
-│   │
-│   └── tb/
+│   │   └── ...
+│   └── test/
 │       ├── img1.jpg
 │       ├── img2.jpg
+│       └── ...
 │
-└── test/
-    ├── normal/
+└── tb/
+    ├── train/
     │   ├── img1.jpg
-    │
-    └── tb/
+    │   └── ...
+    └── test/
         ├── img1.jpg
+        └── ...
+```
 
+**Notes:**
+- Each folder represents a class
+- Compatible with:
+  - TensorFlow `ImageDataGenerator`
+  - PyTorch `DataLoader`
+- Designed for binary medical image classification
 
-Each folder represents a class
+---
 
-Compatible with TensorFlow ImageDataGenerator and PyTorch DataLoader
+## 🔄 Preprocessing Pipeline
 
-Designed for binary medical classification
+- Image resizing according to model input requirements
+- Normalization using pretrained model standards
+- Conversion to tensors (for PyTorch models)
+- Batch loading for efficient training
+- No aggressive data augmentation to preserve medical image features
 
-🔄 Preprocessing Pipeline
+---
 
-Image resizing according to model requirements
-
-Normalization using pretrained model standards
-
-Conversion to tensors (PyTorch)
-
-Batch loading for efficient training
-
-No aggressive augmentation to preserve medical features
-
-📊 Evaluation Metrics
+## 📊 Evaluation Metrics
 
 Model performance is evaluated using:
 
-Accuracy
+- **Accuracy**
+- **Precision**
+- **Recall**
+- **F1-score**
+- **Confusion Matrix**
+- **Classification Report**
 
-Precision
+⏱️ **Training and inference time** are also monitored.
 
-Recall
+---
 
-F1-score
+## 🛠 Tech Stack & Tools
 
-Confusion Matrix
+- **Python**
+- **Google Colab**
+- **TensorFlow / Keras**
+- **PyTorch**
+- **Vision Transformer (ViT)**
+- **NumPy**
+- **Matplotlib**
+- **Scikit-learn** (metrics only)
+- **GitHub**
 
-Classification Report
+---
 
-Training and inference time are also monitored.
+## 🚀 How to Run the Project
 
-🛠 Tech Stack & Tools
+1. Open the notebook in **Google Colab**
+2. Mount Google Drive or upload the dataset
+3. Ensure the dataset follows the correct folder structure
+4. Select the desired model (CNN or ViT)
+5. Run all cells sequentially
+6. Analyze metrics and visualizations
 
-Python
+---
 
-Google Colab
+## 📈 Key Insights
 
-TensorFlow / Keras
+- CNNs perform well for local feature extraction in medical images
+- Vision Transformers capture global context effectively
+- Model size directly impacts training and inference time
+- Proper preprocessing is critical for stable and reliable performance
+- Deep models can achieve strong results even with limited medical data
 
-PyTorch
-
-Vision Transformer (ViT)
-
-NumPy
-
-Matplotlib
-
-Scikit-learn (metrics only)
-
-GitHub
-
-🚀 How to Run the Project
-
-Open the notebook in Google Colab
-
-Mount Google Drive or upload the dataset
-
-Ensure dataset follows the correct folder structure
-
-Select the desired model (CNN or ViT)
-
-Run all cells sequentially
-
-Analyze metrics and visualizations
-
-📈 Key Insights
-
-CNNs perform well for local feature extraction in medical images
-
-Vision Transformers capture global context effectively
-
-Model size directly affects training and inference time
-
-Proper preprocessing is critical for stable performance
-
-Deep models can achieve strong results even with limited data
+---
